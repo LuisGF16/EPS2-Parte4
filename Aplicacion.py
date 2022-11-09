@@ -1,28 +1,28 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
+import sqlite3
 
-This is a temporary script file.
-"""
-while True:
-    print ("\n**Menu**")
-    print ("1. Registrar")
-    print ("2. Eliminar")
-    print ("3. Editar")
-    print ("4. Listar")
-    print ("5. Salir")
+
+conexion = sqlite3.connect("AGLR_almacen.db")
+tabla_producto = """
+                        CREATE TABLE PRODUCTO(
+                        IDPRODUCTO INTEGER PRIMARY KEY AUTOINCREMENT,
+                        CODIGO TEXT UNIQUE,
+                        NOMBRE TEXT,
+                        PRECIO REAL)
+                    """
+cursor = conexion.cursor()
+if conexion:
+    while True:
+        print ("\n*Menu*")
+        print ("1. Registrar")
+        print ("2. Eliminar")
+        print ("3. Editar")
+        print ("4. Listar")
+        print ("5. Salir")
+        
+        opc = input ("Ingrese un opcion: ")
+        
+        
+else:
     
-    opc = input ("Ingrese un opcion: ")
-    
-    if opc == "1":
-        print ("OPCION REGISTRAR")
-    elif opc == "2":
-        print ("OPCION ELIMINAR")
-    elif opc == "3":
-        print ("OPCION EDITAR")
-    elif opc == "4":
-        print ("OPCION LISTAR")
-    elif opc == "5":
-        break
-    else:
-        print ("Opcion invalida")
+    cursor.execute(tabla_producto)
+    conexion.close()
